@@ -1,0 +1,114 @@
+{
+    "id": "example-extension",
+    "name": "Example Extension",
+    "version": "0.1.0",
+    "description": "An Example Extension.",
+    "author": "Reviactyl",
+    "website": "https://reviactyl.app/",
+    "update_url": "https://github.com/reviactyl/example-extension/",
+    "api_version": "RCYL_v26",
+    "target_version": "canary",
+    "backend": {
+        "routes": {
+            "client": {
+                "file": "backend/routes/client.php",
+                "middleware": []
+            }
+        },
+        "commands": [],
+        "schedules": [],
+        "providers": [],
+        "boot_hooks": []
+    },
+    "frontend": {
+        "build_strategy": "source",
+        "entry_points": [],
+        "slots": [
+            {
+                "name": "dashboard:router:above",
+                "module": "frontend/src/dashboard.tsx",
+                "export": "default",
+                "order": 10
+            },
+            {
+                "name": "dashboard:router:below",
+                "module": "frontend/src/dashboardx.tsx",
+                "export": "default",
+                "order": 10
+            }
+        ],
+        "routes": {
+            "dashboardRouter": [
+                {
+                    "path": "/account/my-extension",
+                    "label": "My Extension Route",
+                    "module": "frontend/src/dashboard-route.tsx",
+                    "export": "default",
+                    "icon": "icon:RiArchiveBox"
+                }
+            ],
+            "serverRouter": [
+                {
+                    "path": "testeing",
+                    "label": "Normal Route",
+                    "module": "frontend/src/server-route.tsx",
+                    "export": "default",
+                    "icon": "icon:RiArchiveBox"
+                },
+                {
+                    "path": "egg-id-route",
+                    "label": "eggId Route",
+                    "module": "frontend/src/server-route.tsx",
+                    "export": "default",
+                    "permission": "activity.read",
+                    "eggId": 1,
+                    "icon": "icon:RiArrowsPointingIn"
+                },
+                {
+                    "path": "egg-ids-route",
+                    "label": "eggIds Route",
+                    "module": "frontend/src/server-route.tsx",
+                    "export": "default",
+                    "permission": "activity.read",
+                    "eggIds": [
+                        1,
+                        2,
+                        3
+                    ],
+                    "icon": "icon:RiBanknotes"
+                },
+                {
+                    "path": "nest-id-route",
+                    "label": "nestId Route",
+                    "module": "frontend/src/server-route.tsx",
+                    "export": "default",
+                    "permission": "activity.read",
+                    "nestId": 1,
+                    "icon": "icon:RiBanknotes"
+                },
+                {
+                    "path": "nest-ids-route",
+                    "label": "nestIds Route",
+                    "module": "frontend/src/server-route.tsx",
+                    "export": "default",
+                    "permission": "activity.read",
+                    "nestIds": [
+                        1,
+                        2
+                    ],
+                    "icon": "icon:RiBanknotes"
+                }
+            ]
+        },
+        "source": {
+            "entry": "frontend/src/dashboard.tsx",
+            "entries": [
+                "frontend/src/dashboard-route.tsx",
+                "frontend/src/server-route.tsx"
+            ]
+        }
+    },
+    "assets": [],
+    "permissions": [],
+    "feature_flags": []
+}
